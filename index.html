@@ -29,7 +29,8 @@
       </div>
       <div class="row" id="animeCard"></div>
 
-      <div class="row">
+      <div class="row pt-5">
+        <h3 class="text-center">Ticket Booked</h3>
         <div class="col-4">
           <table class="table table-striped">
             <h3 class="text-center">Monday</h3>
@@ -162,16 +163,49 @@
           </table>
         </div>
       </div>
-      <div class="row bg-danger p-3">
-        <div class="col-6">
-          <h3>Total ticket price</h3>
+
+      <form
+        action="javascript:void(0)"
+        onsubmit="addBooking(this)"
+        class="shadow-sm p-3 mb-5 bg-body-tertiary rounded"
+      >
+        <div class="row p-3">
+          <h2 class="text-center">Booking Detail</h2>
+          <div class="col-md-5">
+            <input
+              id="nameinput"
+              type="text"
+              name="name"
+              class="form-control"
+              required
+              placeholder="Type your name"
+            />
+          </div>
+          <div class="col-md-4">
+            <input
+              id="emailinput"
+              type="email"
+              name="email"
+              class="form-control"
+              required
+              placeholder="Type your Email"
+            />
+          </div>
+          <div class="col-md-3">
+            <button class="btn btn-primary w-100">Order</button>
+          </div>
         </div>
-        <div class="col-6 d-flex align-items-center">
-          <span id="totalprice">$</span>
-        </div>
-      </div>
+      </form>
     </div>
 
+    <div class="row bg-danger p-3">
+      <div class="col-6">
+        <h3>Total ticket price</h3>
+      </div>
+      <div class="col-6 d-flex align-items-center">
+        <span id="totalprice">$</span>
+      </div>
+    </div>
     <script src="./script.js"></script>
   </body>
 </html>

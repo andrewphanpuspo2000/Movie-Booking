@@ -1,6 +1,7 @@
 const api = "https://api.jikan.moe/v4/anime/1/news";
 
 let movieArray = [];
+let buyers = [];
 
 const fetchAPI = async () => {
   const response = await fetch(api);
@@ -27,7 +28,7 @@ const displayAnime = () => {
   const getCardField = document.getElementById("animeCard");
   let elem = "";
   movieArray.forEach((item, i) => {
-    elem += `<div class="col col-md-4">
+    elem += `<div class="col col-md-4 h-50">
     <div class="card mt-3" style="width: 20rem;">
           <img src="${item.images.jpg.image_url}" class="card-img-top" alt="...">
         <div class="card-body">
@@ -148,4 +149,37 @@ const setDay = (id, day) => {
   });
   console.log(movieArray);
   displayTable();
+};
+
+const addBooking = (e) => {
+  const encapForm = new FormData(e);
+  const getName = encapForm.get("name");
+  const getEmail = encapForm.get("email");
+  let tempArr = [];
+  let sumPrice = 0;
+
+  const tempObj = {
+    name: getName,
+    email: getEmail,
+    booking: tempArr,
+    totalcost: 0,
+  };
+  const checkBooked = movieArray.filter((item) => item.day !== "");
+
+  if (checkBooked.length === 0) {
+    alert("please booked a ticket");
+    return;
+  }
+
+  movieArray.map((item, i) => {
+    if (item.day) {
+      tempArr.push(item.title);
+      sumPrice += item.price;
+    }
+  });
+  tempObj.totalcost = sumPrice;
+  buyers.push(tempObj);
+  console.log(buyers);
+  document.getElementById("nameinput").value = "";
+  document.getElementById("emailinput").value = "";
 };
