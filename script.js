@@ -178,8 +178,58 @@ const addBooking = (e) => {
     }
   });
   tempObj.totalcost = sumPrice;
-  buyers.push(tempObj);
+  if (checkDuplicate(getName) || buyers.length === 0) {
+    buyers.push(tempObj);
+  }
+
   console.log(buyers);
   document.getElementById("nameinput").value = "";
   document.getElementById("emailinput").value = "";
+  displayBookingList();
+  refreshMovieDay();
+  displayTable();
+};
+
+const checkDuplicate = (Obj) => {
+  let ToF = true;
+  buyers.forEach((item) => {
+    if (item.name === Obj) {
+      alert("Can not have duplicate name");
+      ToF = false;
+    }
+  });
+  return ToF;
+};
+
+const displayBookingList = () => {
+  const getBLId = document.getElementById("bookingList");
+  let str = "";
+  buyers.forEach((item, i) => {
+    str += `
+        <tr>
+         <td>${item.name}</td>
+         <td>$${item.totalcost}</td>
+         <td><ul>${displayListBooked(item.booking)}</ul></td>
+         </tr>
+      `;
+  });
+
+  getBLId.innerHTML = str;
+};
+//to count how many movies was booked by buyers
+function displayListBooked(list) {
+  let lists = "";
+  list.map((item, i) => {
+    lists += `
+        <li>${item}</li>
+        `;
+    return;
+  });
+  return lists;
+}
+
+const refreshMovieDay = () => {
+  movieArray.forEach((item) => {
+    item.day = "";
+  });
 };
