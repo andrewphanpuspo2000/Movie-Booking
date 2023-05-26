@@ -85,6 +85,7 @@ const displayTable = () => {
       strMon += `<tr>
          <td>${item.title}</td>
          <td>$ ${item.price}</td>
+         <td> <button onclick="deleteMovie('${item.mal_id}')">delete</button></td>
        </tr>`;
     } else if (item.day === "tuesday") {
       strTues += `<tr>
@@ -134,6 +135,14 @@ const displayTable = () => {
   totalThursday.innerText = getTotalThurs;
   totalFriday.innerText = getTotalFri;
   totalSaturday.innerText = getTotalSat;
+};
+const deleteMovie = (id) => {
+  movieArray.forEach((item, i) => {
+    if (item.mal_id === +id) item.day = "";
+    console.log(typeof item.mal_id);
+  });
+  console.log(typeof id);
+  console.log(displayTable());
 };
 
 const displayDayTotalPrice = (day) => {
