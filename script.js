@@ -85,38 +85,50 @@ const displayTable = () => {
       strMon += `<tr>
          <td>${item.title}</td>
          <td>$ ${item.price}</td>
-         <td> <button onclick="deleteMovie('${item.mal_id}')">delete</button></td>
+         <td> <button class="btn btn-warning"  onclick="deleteMovie('${item.mal_id}')">delete</button></td>
        </tr>`;
     } else if (item.day === "tuesday") {
       strTues += `<tr>
          <td>${item.title}</td>
          <td>$ ${item.price}</td>
+         <td> <button class="btn btn-warning"  onclick="deleteMovie('${item.mal_id}')">delete</button></td>
+
        </tr>`;
     } else if (item.day === "wednesday") {
       strWed += `<tr>
          <td>${item.title}</td>
          <td>$ ${item.price}</td>
+         <td> <button class="btn btn-warning" onclick="deleteMovie('${item.mal_id}')">delete</button></td>
+
        </tr>`;
     } else if (item.day === "thursday") {
       strThur += `<tr>
          <td>${item.title}</td>
          <td>$ ${item.price}</td>
+         <td> <button class="btn btn-warning" onclick="deleteMovie('${item.mal_id}')">delete</button></td>
+
        </tr>`;
     } else if (item.day === "friday") {
       strFri += `<tr>
          <td>${item.title}</td>
          <td>$ ${item.price}</td>
+         <td> <button class="btn btn-warning" onclick="deleteMovie('${item.mal_id}')">delete</button></td>
+
        </tr>`;
     } else if (item.day === "saturday") {
       strSat += `<tr>
          <td>${item.title}</td>
          <td>$ ${item.price}</td>
+         <td> <button class="btn btn-warning" onclick="deleteMovie('${item.mal_id}')">delete</button></td>
+
        </tr>`;
     }
     if (item.day === "sunday") {
       strSun += `<tr>
         <td>${item.title}</td>
         <td>$${item.price}</td>
+        <td> <button class="btn btn-warning" onclick="deleteMovie('${item.mal_id}')">delete</button></td>
+
       </tr>`;
     }
   });
